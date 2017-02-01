@@ -16,7 +16,6 @@ public class validPalindrome {
             }        
         }
     }
-	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		validPalindrome v = new validPalindrome();
