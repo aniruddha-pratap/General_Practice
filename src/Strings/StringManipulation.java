@@ -1,6 +1,7 @@
 package Strings;
 import java.util.*;
 public class StringManipulation {
+	
 	static String CountCharacter(String s){
 		Map<Character, Integer> charCount = new HashMap<Character, Integer>();
 		int maxCount = 0;
@@ -13,15 +14,15 @@ public class StringManipulation {
 					maxCount = count+1;
 					maxCh = s.charAt(i);
 				}
-			}else{
-				charCount.put(s.charAt(i), 1);
 			}
+			charCount.put(s.charAt(i), 1);
+			
 		}
 		return Character.toString(maxCh);
 	}
 	
 	public static void main(String args[]){
-		String count = StringManipulation.CountCharacter("abbbccddd");
+		String count = StringManipulation.CountCharacter("abb");
 		System.out.println(count);
 	}
 }

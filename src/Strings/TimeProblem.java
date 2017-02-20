@@ -9,7 +9,7 @@ public class TimeProblem {
 	    int third = -1;
 	    int fourth = -1;
 	    int ctr = 0;
-	    
+	    String s = "";
 	    for(int i=0;i<intArr.length-1;i++){
 	    	if(intArr[i]<=intArr[i+1]){
 	    		int temp=intArr[i];
