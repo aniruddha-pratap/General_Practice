@@ -25,10 +25,17 @@ public class SqyareRoot {
         //return false;
     }
 	
+	public static void swapNumber(int a , int b){
+		a = a+b;
+		b = a-b;
+		a = a-b;
+		System.out.println("A = "+ a + " B = "+b);
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		System.out.println(SqyareRoot.isPerfectSquare(681));
-		
+		SqyareRoot.swapNumber(2, 4);
 	}
 
 }
