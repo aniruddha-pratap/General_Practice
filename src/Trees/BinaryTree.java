@@ -54,6 +54,106 @@ public class BinaryTree {
 		return list;
 	}
 	
+	public static void levelOrder(BinaryTree head){
+		Queue<BinaryTree> q = new LinkedList<BinaryTree>();
+		q.add(head);
+		while(!q.isEmpty()){
+			int nodeCount = q.size();
+			if(nodeCount == 0)
+				break;
+			while(nodeCount>0){
+				BinaryTree temp = q.poll();
+				System.out.print(temp.data);
+				if(temp.left!=null){
+					q.add(temp.left);
+				}
+				if(temp.right!=null){
+					q.add(temp.right);
+				}
+				nodeCount--;
+			}
+			System.out.println();
+		}
+	
+	}
+	
+	public static int findMax(BinaryTree head){
+		int max=Integer.MIN_VALUE;
+		Queue<BinaryTree> q = new LinkedList<BinaryTree>();
+		q.add(head);
+		while(!q.isEmpty()){
+			BinaryTree temp = q.poll();
+			if(temp.data  > max){
+				max = temp.data;
+			}
+			if(temp.left!=null){
+				q.add(temp.left);
+			}
+			if(temp.right!=null){
+				q.add(temp.right);
+			}
+		}
+		return max;
+	}
+	
+	public static boolean findElement(BinaryTree head, int data){
+		Queue<BinaryTree> q = new LinkedList<BinaryTree>();
+		q.add(head);
+		while(!q.isEmpty()){
+			BinaryTree temp = q.poll();
+			if(temp.data == data){
+				return true;
+			}
+			if(temp.left!=null){
+				q.add(temp.left);
+			}
+			if(temp.right!=null){
+				q.add(temp.right);
+			}
+		}
+		return false;
+	}
+	
+	public static int treeSize(BinaryTree head){
+		Queue<BinaryTree> q = new LinkedList<BinaryTree>();
+		q.add(head);
+		int count =0;
+		while(!q.isEmpty()){
+			BinaryTree temp = q.poll();
+			count++;
+			if(temp.left!=null){
+				q.add(temp.left);
+			}
+			if(temp.right!=null){
+				q.add(temp.right);
+			}
+		}
+		return count;
+	}
+	
+	public static int treeHeight(BinaryTree head){
+		Queue<BinaryTree> q  =  new LinkedList<BinaryTree>();
+		q.add(head);
+		int height =0;
+		while(!q.isEmpty()){
+			int nodeCount = q.size();
+			if(nodeCount == 0){
+				return height;
+			}
+			height++;
+			while(nodeCount>0){
+				BinaryTree temp = q.poll();
+				if(temp.left!=null){
+					q.add(temp.left);
+				}
+				if(temp.right!=null){
+					q.add(temp.right);
+				}
+				nodeCount--;
+			}
+		}
+		return height;
+	}
 	
 	public static void main(String args[]){
 		BinaryTree head = new BinaryTree(1);
@@ -69,11 +169,16 @@ public class BinaryTree {
 		two.setBinaryTreeRight(five);
 		three.setBinaryTreeLeft(six);
 		three.setBinaryTreeRight(seven);
-		//ArrayList<Integer> list = BinaryTree.preOrderTraversal(head);
+		/**ArrayList<Integer> list = BinaryTree.preOrderTraversal(head);
 		ArrayList<Integer> list = BinaryTree.inOrderTraversal(head);
 		for(int i=0;i<list.size();i++){
 			System.out.println(list.get(i));
-		}
+		}**/
+		BinaryTree.levelOrder(head);
+		//System.out.println("Max element is " + BinaryTree.findMax(head));
+		//System.out.println("Element present " + BinaryTree.findElement(head, 5));
+		//System.out.println("Size of tree is " + BinaryTree.treeSize(head));
+		System.out.println("Height of tree is " + BinaryTree.treeHeight(head));
 	}
 		
 }
