@@ -1,16 +1,20 @@
 package LinkedList;
 
-public class ReverseList {
+public class ReverseListII {
 	
-	public static LinkedList reverseList(LinkedList head){
-		LinkedList current= head, temp=null, next=null;
-		while(current!=null){
+	public static LinkedList reverseListII(LinkedList head, int i, int k){
+		LinkedList current = head,temp=null, next=null;
+		for(int j=1;j<i;j++){
+			current = current.next;
+		}
+		for(int l=i;l<=k;l++){
 			next = current.next;
-			current.next  = temp;
+			current.next = temp;
 			temp = current;
 			current = next;
 		}
-		return temp;
+		head.next = temp;
+		return head;
 	}
 
 	public static void main(String[] args) {
@@ -26,11 +30,12 @@ public class ReverseList {
 		two.next = three;
 		three.next = four;
 		four.next = five;
-		head = ReverseList.reverseList(head);
+		head = ReverseListII.reverseListII(head,2,4);
 		while(head!=null){
 			System.out.print(head.val);
 			head = head.next;
 		}
+
 	}
 
 }
