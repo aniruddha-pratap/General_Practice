@@ -17,8 +17,14 @@ public class FirstUniqueCharacter {
         return ' ';
     }
 	
+	public boolean repeatedSubstringPattern(String str) {
+        String s = str + str;
+        return s.substring(1, s.length() - 1).contains(str);
+    }
+	
 	public static void main(String []args){
 		FirstUniqueCharacter f =new FirstUniqueCharacter();
-		System.out.println(f.firstUniqChar("Aniruddh"));
+		System.out.println(f.repeatedSubstringPattern("aaa"));
+		//System.out.println(f.firstUniqChar("Aniruddh"));
 	}
 }

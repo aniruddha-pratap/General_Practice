@@ -59,8 +59,8 @@ public class BinaryTree {
 		q.add(head);
 		while(!q.isEmpty()){
 			int nodeCount = q.size();
-			if(nodeCount == 0)
-				break;
+			//if(nodeCount == 0)
+				//break;
 			while(nodeCount>0){
 				BinaryTree temp = q.poll();
 				System.out.print(temp.data);
@@ -178,7 +178,7 @@ public class BinaryTree {
 		//System.out.println("Max element is " + BinaryTree.findMax(head));
 		//System.out.println("Element present " + BinaryTree.findElement(head, 5));
 		//System.out.println("Size of tree is " + BinaryTree.treeSize(head));
-		System.out.println("Height of tree is " + BinaryTree.treeHeight(head));
+		//System.out.println("Height of tree is " + BinaryTree.treeHeight(head));
 	}
 		
 }
