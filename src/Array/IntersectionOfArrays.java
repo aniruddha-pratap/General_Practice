@@ -7,7 +7,7 @@ public class IntersectionOfArrays {
 		//Sort the two arrays and then move ahead in each of the array
 		Arrays.sort(nums1);
 		Arrays.sort(nums2);
-		List<Integer> list = new ArrayList<Integer>();
+		Set<Integer> list = new HashSet<Integer>();
 		int n1=0,n2=0;
 		while(n1 < nums1.length && n2 < nums2.length){
 			if(nums1[n1]==nums2[n2]){
@@ -22,8 +22,10 @@ public class IntersectionOfArrays {
 			}
 		}
 		int n[] = new int[list.size()];
-		for(int i=0;i<list.size();i++){
-			n[i]=list.get(i);
+		int i=0;
+		for(Integer res : list){
+			n[i]=res;
+			i++;
 		}
 		return n;
 	}
