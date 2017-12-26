@@ -19,6 +19,6 @@ public class MaximumAverage {
 	
 	public static void main(String args[]){
 		int nums[] = {1,12,-5,-6,50,3};
-		MaximumAverage.findMaxAverage(nums, 4);
+        System.out.println(MaximumAverage.findMaxAverage(nums, 4));
 	}
 }
