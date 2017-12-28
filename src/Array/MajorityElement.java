@@ -18,16 +18,16 @@ public class MajorityElement {
 				map.put(nums[i], 1);
 			}
 		}
-		/** can also be solved like this
-		int max=0;
+		// can also be solved like this
+		/*int max=0;
 		Arrays.sort(nums);
-		max = nums[nums.length/2];**/
+		max = nums[nums.length/2];*/
 		return max;
     }
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int n []={1,1,2,2,2};
+		int n []={1,1,3,4,9,7,7,7,8,5,2,2,2};
 		System.out.println(MajorityElement.majorityElement(n));
 	}
 
