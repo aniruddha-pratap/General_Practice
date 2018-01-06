@@ -4,25 +4,27 @@ import java.util.Arrays;
 
 public class ReverseVowels {
     public static String reverseVowels(String s) {
-        int start =0 , end = s.length() - 1;
+        int start = 0, end = s.length()-1;
         char str[] = s.toCharArray();
-        while(start < end) {
-            if(str[start] == 'a' || str[start] == 'e' ||str[start] == 'i' ||str[start] == 'o' || str[start] == 'u') {
-                if(str[end] == 'a' || str[end] == 'e' ||str[end] == 'i' ||str[end] == 'o' || str[end] == 'u') {
+        String vowels = "aeiouAEIOU";
+
+        while(start < end){
+            if(vowels.contains(str[start]+"")) {
+                if(!vowels.contains(str[end]+"")) {
+                    end--;
+                } else {
                     char temp = str[end];
                     str[end] = str[start];
                     str[start]= temp;
-                } else {
+                    start++;
                     end--;
                 }
-            } else{
+            }else{
                 start++;
             }
-            start++;
-            end--;
-
         }
-        return Arrays.toString(str);
+
+        return new String(str);
     }
 
     public static void main(String args[]) {
