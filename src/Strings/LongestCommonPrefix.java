@@ -7,20 +7,25 @@ public class LongestCommonPrefix {
 			return "";
 		}
 		StringBuilder s  = new StringBuilder();
-		for(int i=0;i<strs[0].length();i++){
-			char c = strs[0].charAt(i);
-			for(String str : strs){
-				if(str.length()<i+1 || str.charAt(i) != c){
-					return s.toString();
-				}
-			}
-			s.append(c);
+
+		int shortLen = 0;
+
+		for(int i=0; i<strs.length; i++) {
+			if(strs[shortLen].length() > strs[i].length())
+				shortLen = i;
 		}
-		return s.toString();
+		String shortest = strs[shortLen];
+		for(int j=0; j<strs.length; j++){
+			if(j==shortLen)
+				continue;
+			if(strs[j].indexOf(shortest) != 0)
+				shortest = shortest.substring(0, shortest.length()-1);
+		}
+		return shortest;
 	}
 	
 	public static void main(String[] args){
-		String s[]= {};
+		String s[]= {"abc", "abcd", "abcde", "abcdef"};
 		System.out.println(LongestCommonPrefix.longestCommonPrefix(s));
 	}
 }

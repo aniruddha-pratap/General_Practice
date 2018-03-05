@@ -20,21 +20,25 @@ public class BinaryTree {
 		this.right = node;
 	}
 	
-	public static ArrayList<Integer> preOrderTraversal(BinaryTree head){
-		ArrayList<Integer> list =  new ArrayList<Integer>();
+	public static String preOrderTraversal(BinaryTree head){
+		if(head==null){
+		    return null;
+        }
+	    StringBuilder sb = new StringBuilder();
 		Stack<BinaryTree> s =  new Stack<BinaryTree>();
 		s.push(head);
 		while(!s.isEmpty()){
 			BinaryTree temp = s.pop();
-			list.add(temp.data);
+			sb.append(temp.data);
 			if(temp.right != null){
 				s.push(temp.right);
 			}
+
 			if(temp.left != null){
-				s.push(temp.left);
+			    s.push(temp.left);
 			}
 		}
-		return list;
+		return sb.toString();
 	}
 	
 	public static ArrayList<Integer> inOrderTraversal(BinaryTree head){
@@ -54,16 +58,17 @@ public class BinaryTree {
 		return list;
 	}
 	
-	public static void levelOrder(BinaryTree head){
+	public static List<List<Integer>> levelOrder(BinaryTree head){
 		Queue<BinaryTree> q = new LinkedList<BinaryTree>();
+		List<List<Integer>> result = new ArrayList<>();
 		q.add(head);
 		while(!q.isEmpty()){
 			int nodeCount = q.size();
-			//if(nodeCount == 0)
-				//break;
+			List<Integer> t = new ArrayList<>();
 			while(nodeCount>0){
-				BinaryTree temp = q.poll();
-				System.out.print(temp.data);
+                BinaryTree temp = q.poll();
+				t.add(temp.data);
+				//System.out.print(temp.data);
 				if(temp.left!=null){
 					q.add(temp.left);
 				}
@@ -72,9 +77,9 @@ public class BinaryTree {
 				}
 				nodeCount--;
 			}
-			System.out.println();
+			result.add(t);
 		}
-	
+		return result;
 	}
 	
 	public static int findMax(BinaryTree head){
@@ -137,9 +142,6 @@ public class BinaryTree {
 		int height =0;
 		while(!q.isEmpty()){
 			int nodeCount = q.size();
-			if(nodeCount == 0){
-				return height;
-			}
 			height++;
 			while(nodeCount>0){
 				BinaryTree temp = q.poll();
@@ -169,12 +171,21 @@ public class BinaryTree {
 		two.setBinaryTreeRight(five);
 		three.setBinaryTreeLeft(six);
 		three.setBinaryTreeRight(seven);
-		/**ArrayList<Integer> list = BinaryTree.preOrderTraversal(head);
-		ArrayList<Integer> list = BinaryTree.inOrderTraversal(head);
+        System.out.println(BinaryTree.preOrderTraversal(head));
+        /**ArrayList<Integer> list = BinaryTree.inOrderTraversal(head);
 		for(int i=0;i<list.size();i++){
 			System.out.println(list.get(i));
 		}**/
-		BinaryTree.levelOrder(head);
+		List<List<Integer>> t = BinaryTree.levelOrder(head);
+		int i=0;
+		while(i<t.size()){
+            System.out.println(t.size());
+            List<Integer> e = t.get(i);
+            for(int j=0; j<e.size(); j++){
+                System.out.println(e.get(j));
+            }
+            i++;
+		}
 		//System.out.println("Max element is " + BinaryTree.findMax(head));
 		//System.out.println("Element present " + BinaryTree.findElement(head, 5));
 		//System.out.println("Size of tree is " + BinaryTree.treeSize(head));

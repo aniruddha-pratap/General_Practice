@@ -3,8 +3,9 @@ import java.util.*;
 
 public class LongestSubstring {
 	
-	static String longestSubstring(String s){
-		HashMap<Character, Integer> str = new HashMap<Character, Integer>();
+	static int longestSubstring(String s){
+
+		/*HashMap<Character, Integer> str = new HashMap<Character, Integer>();
  		int n =s.length();
  		int lenSubstr = 0;
  		String result = "";
@@ -21,12 +22,57 @@ public class LongestSubstring {
 			}
 		}
 		//System.out.println(lenSubstr);
-		return result;
+		return result;*/
+
+		int max=0, i=0, j=0, n=s.length();
+		Set<Character> set = new HashSet<>();
+
+		while(i<n) {
+
+			if(!set.contains(s.charAt(i))) {
+                set.add(s.charAt(i));
+				max = Math.max(max, set.size());
+				i++;
+			}
+			else {
+				set.remove(s.charAt(j));
+				j++;
+			}
+		}
+
+		return max;
 	}
+
+	public static void sorColors (int nums[]){
+	    int countZero = 0, countOne = 0;
+	    for(int i=0;i<nums.length;i++) {
+	        if(nums[i] ==0){
+	            countZero++;
+            } else if (nums[i] == 1){
+	            countOne++;
+            }
+        }
+        for(int i=0;i<nums.length;i++){
+	        if(countZero>0){
+	            nums[i]=0;
+	            countZero--;
+            } else if (countOne>0){
+	            nums[i]=1;
+	            countOne--;
+            } else {
+                nums[i]=2;
+            }
+        }
+    }
 	
 	public static void main(String []args){
-		String a = LongestSubstring.longestSubstring("aau");
-		System.out.println(a);
+		//int a = LongestSubstring.longestSubstring("aau");
+		//System.out.println(a);
+        int a[] = {0,2,1,1,0,2};
+        LongestSubstring.sorColors(a);
+        for(int i=0;i<a.length;i++){
+            System.out.print(a[i]);
+        }
 	}
 }
 

@@ -22,12 +22,16 @@ public class SingleDuplicate {
             start = i;
             end = nums.length -1;
         }
-
         return 0;
     }
 
+
     public static void main(String args[]) {
-        int a[] = {1,9,8,5,9,2,6,12,14,16,18};
-        System.out.println(SingleDuplicate.findDuplicate(a));
+        String a = "1";
+        String b = "1";
+        System.out.println("1".hashCode());
+        System.out.println(a.hashCode());
+        System.out.println(a==b);
+        System.out.println(a.equals(b));
     }
 }

@@ -4,60 +4,26 @@ import java.util.*;
 
 public class ParanthesisBalancing {
 
-	public static void paranthesisBalancing(String str){
+	public static boolean paranthesisBalancing(String str){
 		Stack<Character> s = new Stack<Character>();
-		for(int i=0;i<str.length();i++){
-			if(str.charAt(i) == ')'){
-				if(!s.isEmpty()){
-					char temp = s.peek();
-					if(temp == '('){
-						s.pop();
-					}else{
-						System.out.print("Not Valid");
-						break;
-					}
-				}else{
-					System.out.print("Not Valid");
-				}
-			}
-			else if(str.charAt(i) == ']'){
-				if(!s.isEmpty()){
-					char temp = s.peek();
-					if(temp == '['){
-						s.pop();
-					}else{
-						System.out.print("Not Valid");
-						break;
-					}
-				}else{
-					System.out.print("Not Valid");
-				}
-			}
-			else if(str.charAt(i) == '}'){
-				if(!s.isEmpty()){
-					char temp = s.pop();
-					if(temp == '{'){
-						s.pop();
-					}else{
-						System.out.print("Not Valid");
-						break;
-					}
-				}else{
-					System.out.print("Not Valid");
-				}
-			}else{
-				s.push(str.charAt(i));
+		for(int i =0; i<str.length(); i++) {
+			if(str.charAt(i) == '(') {
+				s.push(')');
+			} else if (str.charAt(i) == '{') {
+				s.push('}');
+			} else if (str.charAt(i) == '[') {
+				s.push(']');
+			} else if (s.isEmpty() || str.charAt(i) != s.pop()) {
+				return false;
 			}
 		}
-		if(s.isEmpty()){
-			System.out.println("Valid String");
-		}
+		return true;
 	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String str = "{}[]"; 
-    	ParanthesisBalancing.paranthesisBalancing(str);
+		String str = "{}[]";
+		System.out.println(ParanthesisBalancing.paranthesisBalancing(str));
 	}
 
 }

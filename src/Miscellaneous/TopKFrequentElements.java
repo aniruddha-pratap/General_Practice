@@ -4,26 +4,45 @@ import java.util.*;
 public class TopKFrequentElements {
 	
 	public static List<Integer> topKElements(int nums[], int k){
-		List<Integer> list = new ArrayList<Integer>();
-		Map<Integer, Integer> map =  new HashMap<Integer, Integer>();
+		//Assuming only positive numbers
+	    int max = Integer.MIN_VALUE;
+
+        List<Integer> list = new ArrayList<>();
+
+		for(int i=0;i<nums.length;i++) {
+			max = Math.max(max, nums[i]);
+		}
+
+        int temp[] = new int[max];
+
 		for(int i=0;i<nums.length;i++){
-			if(map.containsKey(nums[i])){
-				map.put(nums[i], map.get(nums[i])+1);
-			}else{
-				map.put(nums[i], 1);
-			}
-		}
-		List<Integer> sortedList = new ArrayList<Integer>();
-		for(Map.Entry<Integer, Integer> entry: map.entrySet()){
-			
-		}
+			temp[max - nums[i]]++;
+            System.out.println("Nums at "+(max-nums[i])+" "+temp[max-nums[i]]);
+        }
+
+		int tempMax = Integer.MIN_VALUE;
+		for(int i=0;i<k;i++){
+		    int maxIndex =0;
+            for(int j =0;j<temp.length;j++) {
+                if(tempMax < temp[j]) {
+                    maxIndex = j;
+                    tempMax = temp[j];
+                }
+            }
+            list.add(max - maxIndex);
+            temp[maxIndex] = -1;
+            tempMax = Integer.MIN_VALUE;
+        }
 		return list;
 	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int n[] = {1,1,1,2,2,3}; 
-		TopKFrequentElements.topKElements(n, 2);
+		int n[] = {1,3,2,4,1,2,1,4,2,3,4,1,2,1,4};
+		List<Integer> l = TopKFrequentElements.topKElements(n, 2);
+		for(int i=0;i<l.size();i++){
+            System.out.println(l.get(i));
+        }
 	}
 
 }
